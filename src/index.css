@@ -5,7 +5,7 @@ body {
 }
 
 .siderbarComponent {
-  margin: 0px -15px;
+  margin: 0 -15px;
   padding: 20px;
   background-color: #102759;
   height: 100vh;
