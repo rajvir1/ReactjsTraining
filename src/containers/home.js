@@ -46,13 +46,8 @@ class Home extends React.Component {
     toggle() {
         this.setState({ collapse: !this.state.collapse });
       }
-      componentDidMount(){
-        console.log(this.props.history);
-    
-        this.props.history.push("/products");
-      }
     render() {
-        console.log(this.props);
+        // console.log(this.props);
         return (
             <div className="container-fluid">
             <Card>
@@ -113,9 +108,11 @@ Home.propTypes = {
 };
 
 const mapStateToProps = (state) =>
-    ({
+{console.log(state.todo, 'states');
+return ({
         todo: state.todo
     });
+};
 
 const mapDispatchToProps = (dispatch) => ({
     add_todo: bindActionCreators(add_todo, dispatch),

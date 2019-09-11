@@ -5,7 +5,7 @@ body {
 }
 
 .siderbarComponent {
-  margin: 0 -15px;
+  margin: 0px -15px;
   padding: 20px;
   background-color: #102759;
   height: 100vh;
@@ -106,7 +106,4 @@ body {
   margin-top: 51px;
   margin-bottom: 9px;
   color: rgba(255, 255, 255, 0.27);
-}
-.card-img-top {
-  display: none;
 }
