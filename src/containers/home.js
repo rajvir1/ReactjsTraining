@@ -5,8 +5,13 @@ import { bindActionCreators } from "redux";
 import { Link } from "react-router-dom";
 import List from '../components/list';
 import {add_todo, update_todo, delete_todo} from '../actions/todo';
+import {toggleFucntion} from '../actions/toggle';
+import {TOGGLE_FUNCITON} from '../actions/constants';
+
 import { Card, CardImg, CardText, CardBody,
     CardTitle,  Button, FormGroup, Label, Collapse } from 'reactstrap';
+import { timingSafeEqual } from 'crypto';
+import Example from './hook';
 
 class Home extends React.Component {
     constructor(props) {
@@ -22,6 +27,7 @@ class Home extends React.Component {
        this.onSave = this.onSave.bind(this);
        this.toggle = this.toggle.bind(this);
        this.update = this.update.bind(this);
+       this.onToggle = this.onToggle.bind(this)
     }
 
     onSave(){
@@ -46,12 +52,17 @@ class Home extends React.Component {
     toggle() {
         this.setState({ collapse: !this.state.collapse });
       }
+
+      onToggle=()=>{
+            this.props.toggleFucntion(!this.props.toggleValue)
+      }
     render() {
         // console.log(this.props);
         return (
             <div className="container-fluid">
             <Card>
-             <CardImg top width="100%" height="400px" src="./images/react-img.png" alt="Card image cap" />
+             {/* <CardImg  onClick={this.onToggle} top width="100%" height="400px" src="./images/react-img.png" alt="Card image cap" /> */}
+             <Example/>
                 <CardBody>
                 <CardTitle>React Training</CardTitle>
                 <CardText>React is a declarative, efficient, and flexible JavaScript library for building user interfaces. It lets you compose complex UIs from small and isolated pieces of code called “components”.</CardText>
@@ -108,16 +119,20 @@ Home.propTypes = {
 };
 
 const mapStateToProps = (state) =>
-{console.log(state.todo, 'states');
+{console.log(state.products.toggleValue, 'states');
 return ({
-        todo: state.todo
+        todo: state.todo,
+        toggleValue:state.products.toggleValue,
+        
     });
 };
 
 const mapDispatchToProps = (dispatch) => ({
     add_todo: bindActionCreators(add_todo, dispatch),
     update_todo: bindActionCreators(update_todo, dispatch),
-    delete_todo: bindActionCreators(delete_todo, dispatch)
+    delete_todo: bindActionCreators(delete_todo, dispatch),
+    toggleFucntion: bindActionCreators(toggleFucntion, dispatch)
+
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home);

@@ -9,6 +9,7 @@ import { createBrowserHistory } from 'history';
 import configureStore from './config';
 import Routers from './routers';
 
+
 export const history = createBrowserHistory();
 /************ store configration *********/
 const { store } = configureStore(history);
