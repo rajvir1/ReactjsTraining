@@ -22,10 +22,11 @@ export default class Example extends React.Component {
       <div>
         <Navbar color="faded" light>
           <Link to="/" className="mr-auto navbar-brand">Home App</Link>
-          <Link to="/products" className="nav-link">Products</Link>
+          {/* <Link to="/products" className="nav-link">Products</Link> */}
           <Link to="/NestedRoute" className="nav-link Nested">Nested</Link>
           <Link to="/login" className="nav-link">Login</Link>
           <Link to="/signup" className="nav-link">Signup</Link>
+          <Link to="/stateAndProps" className="nav-link">State and Props</Link>
           {/* <NavbarToggler onClick={this.toggleNavbar} className="mr-2" />
           <Collapse isOpen={!this.state.collapsed} navbar>
             <Nav navbar>

@@ -9,6 +9,7 @@ import NestedRoute from '../containers/NestedRoute';
 import NestedRouteChild from '../containers/NestedRouteChild';
 import Header from '../components/header';
 import NotFound from '../components/NoFound';
+import stateAndProps from '../containers/stateAndProps';
 const Routers = () => {
     return (            
         <Router>
@@ -20,7 +21,7 @@ const Routers = () => {
                 <Route exact path="/products" component={Products} />
                 <Route exact path="/NestedRoute" component={NestedRoute} />   
                 <Route exact path="/NestedRouteChild" component={NestedRouteChild} />
-             
+                <Route exact path="/stateAndProps" component={stateAndProps} />
                 <Route path="*" component={NotFound} />
             </Switch>
         </Router>
