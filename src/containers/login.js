@@ -4,6 +4,10 @@ import { Button, FormGroup, Label } from 'reactstrap';
 
 export default class Login extends React.Component {
     constructor(props) {
+        super(props)
+        this.state={
+            inputData:null
+        }
         super(props);
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleSubmitFailed = this.handleSubmitFailed.bind(this);
@@ -15,10 +19,18 @@ export default class Login extends React.Component {
     handleSubmitFailed(errors){
         console.log("errors", errors);
     }
-
+    onChange(e){
+        this.setState({
+            inputData: e.currentTarget.value
+        })
+    }
   render() {
     return (
         <div className="col-md-6 offset-3">
+            <div className="">
+                <h2>Output Input Text</h2>
+                <p>{this.state.inputData}</p>
+            </div>
              <LocalForm
                 onSubmit={(values) => this.handleSubmit(values)}
                 onSubmitFailed={this.handleSubmitFailed}
@@ -31,6 +43,7 @@ export default class Login extends React.Component {
                 type="email" 
                 className="form-control"
                 validators={{ isRequired: val => val && val.length}}
+                onChange={this.onChange.bind(this)}
             />
             <Errors
             model=".email"  
