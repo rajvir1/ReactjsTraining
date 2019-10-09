@@ -1,39 +1,36 @@
 import React, { useState,useEffect } from 'react';
 import HookChild from './hookChild';
-function Example(props) {
+function Hook(props) {
   // Declare a new state variable, which we'll call "count"
-  const [count, setCount] = useState({
-      name:'rajvir',
-      count:true,
-      childState:null
+  const [label, setCount] = useState({
+      name:'rajvir'
   });
+  const [counter, setCounter] = useState({
+    count:0,
+    childState:null
+});
 
-  function  onClickFun(){
-   setCount({
-    ...count,
-       name:'rajvir singh',
-       count : !count.count
+  function counterFunc(){
+    setCounter({
+      count:counter.count + 1
    })
 };
 
-function childState(value){
+function callbackMethod(value){
+
   console.log('value',value)
 setCount({
-  ...count,
-  childState:value,
-  
+  childState:value  
 })
 }
-console.log(count.name)
   return (
-    <div>
-      <p>You clicked times</p>
-      <button onClick={onClickFun}  className={'abc ' + count.count ? 'a' : 'b'}>
-        {count.name}
+    <div className="border-box">
+      <button onClick={counterFunc}>
+        {counter.count}
       </button>
-      <HookChild name={count.name} childStateProp={childState} />
+      <HookChild name={label.name} callback={callbackMethod} />
     </div>
   );
 }
 
-export default Example;
+export default Hook;

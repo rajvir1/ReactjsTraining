@@ -16,6 +16,7 @@ import { timingSafeEqual } from 'crypto';
 import Example from './hook';
 import Child from './Child';
 import stateAndProps from './stateAndProps';
+import { createBrowserHistory } from 'history';
 
 class Home extends React.Component {
     constructor(props) {
@@ -27,8 +28,8 @@ class Home extends React.Component {
             id: null,
             collapse: false,
             toggle: false,
-            date:Date(),
-            designerList:null
+            date: Date(),
+            designerList: null
         };
         this.delete = this.delete.bind(this);
         this.onSave = this.onSave.bind(this);
@@ -36,7 +37,7 @@ class Home extends React.Component {
         this.update = this.update.bind(this);
         this.onToggle = this.onToggle.bind(this)
         this.counterHandler = this.counterHandler.bind(this)
-        this.callBackMethod =  this.callBackMethod.bind(this)
+        this.callBackMethod = this.callBackMethod.bind(this)
     }
 
     onSave() {
@@ -58,10 +59,11 @@ class Home extends React.Component {
     delete(id) {
         this.props.delete_todo(id);
     }
-    toggle() {  
+    toggle() {
         this.setState(
             { toggle: !this.state.toggle }
-            );
+        );
+        this.props.history.push('/login')
     }
 
     onToggle = () => {
@@ -72,11 +74,11 @@ class Home extends React.Component {
             counter: this.state.counter + 1
         })
     }
-    callBackMethod(value){
+    callBackMethod(value) {
         this.setState({
-            designerList:value
-        },()=>{
-              console.log(this.state.designerList)
+            designerList: value
+        }, () => {
+            console.log(this.state.designerList)
         })
     }
     render() {
@@ -146,7 +148,7 @@ class Home extends React.Component {
                 <div className="border-box">
                     <h2>State</h2>
                     <Button onClick={this.toggle} color="primary">
-                    {this.state.toggle ? 'on' : 'off'}
+                        {this.state.toggle ? 'on' : 'off'}
                     </Button>
                 </div>
                 <div className="border-box">
@@ -157,7 +159,7 @@ class Home extends React.Component {
                 <div className="border-box">
                     <h2>Designers List from child</h2>
                     <div>
-                      Total Designers: {this.state.designerList}
+                        Total Designers: {this.state.designerList}
                     </div>
                 </div>
 

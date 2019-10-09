@@ -1,25 +1,22 @@
 import React,{useState} from 'react';
 
 function HookChild(props) {
-const [childState,setChildState] = useState({
-  isvisible:false
-})
-function toggle(){
+  const [label, setLabel] = useState({
+    name:'ChildData'
+});
 
-  setChildState({
-    isvisible: !childState.isvisible,
+function toggle(){
+  console.log(label.name)
+  setLabel({
+    ...label,
+    label: label.name = "test"
   })
-  console.log(
-    'childState.isvisible',childState.isvisible
-  )
-  props.childStateProp(childState.isvisible)  
+  props.callback(label.name)  
 }
   return (
-    <div>
-      <p>You clicked times</p>
-      {/* <button onClick={toggle} className={'btn' + ( childState ? 'red' : 'green' )}> */}
-      <button onClick={toggle} className={ childState.isvisible ? 'red' : 'green'}>
-        Child component {props.name}
+    <div className="border-box" style={{margin:0,paddingLeft:0,paddingRight:0,border:'none'}}>
+      <button onClick={toggle}>
+        Child component: {props.name}
       </button>
     </div>
   );
