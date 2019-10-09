@@ -10,9 +10,12 @@ import NestedRouteChild from '../containers/NestedRouteChild';
 import Header from '../components/header';
 import NotFound from '../components/NoFound';
 import stateAndProps from '../containers/stateAndProps';
+import Hook from '../containers/hook';
+import { createBrowserHistory } from "history";
+const history = createBrowserHistory();
 const Routers = () => {
     return (            
-        <Router>
+        <Router history={history}>
             <Header/>
             <Switch>
                 <Route exact path="/" component={Home} />
@@ -22,6 +25,7 @@ const Routers = () => {
                 <Route exact path="/NestedRoute" component={NestedRoute} />   
                 <Route exact path="/NestedRouteChild" component={NestedRouteChild} />
                 <Route exact path="/stateAndProps" component={stateAndProps} />
+                <Route exact path="/Hook" component={Hook} />
                 <Route path="*" component={NotFound} />
             </Switch>
         </Router>

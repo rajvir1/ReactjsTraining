@@ -27,6 +27,7 @@ export default class Example extends React.Component {
           <Link to="/login" className="nav-link">Login</Link>
           <Link to="/signup" className="nav-link">Signup</Link>
           <Link to="/stateAndProps" className="nav-link">State and Props</Link>
+          {/* <Link to="/Hook" className="nav-link">Hook</Link> */}
           {/* <NavbarToggler onClick={this.toggleNavbar} className="mr-2" />
           <Collapse isOpen={!this.state.collapsed} navbar>
             <Nav navbar>

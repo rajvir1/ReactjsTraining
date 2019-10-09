@@ -10,3 +10,5 @@ export const DELETE_TODO = 'DELETE_TODO';
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 export const GET_PRODUCT_LIST = 'GET_PRODUCT_LIST';
 export const TOGGLE_FUNCITON = 'TOGGLE_FUNCITON';
+
+export const SWICH = 'SWICH';
